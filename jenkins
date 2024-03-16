@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                git 'https://github.com/bharatcharan/test-maven.git'
+            }
+        }
+        stage('install') {
+            steps {
+                sh "mvn install"
+            }
+        }
+        stage('test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage('compile') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('package') {
+            steps {
+                sh "mvn package"
+            }
+        }
+    }
+}
+
